@@ -22,7 +22,7 @@ export default function Contact() {
             GET IN TOUCH
           </span>
           <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-green-500/10 text-green-500 text-[9px] font-mono font-bold rounded border border-green-500/20">
-            <span className="w-1 h-1 rounded-full bg-green-400 animate-ping" /> GATEWAY ONLINE
+            <span className="w-1 h-1 rounded-full bg-red-400 animate-ping" /> GATEWAY OFFLINE
           </div>
         </div>
 
