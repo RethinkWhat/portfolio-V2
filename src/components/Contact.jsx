@@ -21,7 +21,7 @@ export default function Contact() {
             <Mail className="w-4 h-4 text-orange-555" />
             GET IN TOUCH
           </span>
-          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-green-500/10 text-green-500 text-[9px] font-mono font-bold rounded border border-green-500/20">
+          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-green-500/10 text-green-500 text-[9px] font-mono font-bold rounded border border-red-500/20">
             <span className="w-1 h-1 rounded-full bg-red-400 animate-ping" /> GATEWAY OFFLINE
           </div>
         </div>
