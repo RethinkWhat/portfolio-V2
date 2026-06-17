@@ -256,10 +256,10 @@ export default function App() {
           {/* Code Footer file signature indicators - Pure Human-Centered design elements */}
           <div className="flex items-center justify-between font-mono text-[10px] text-neutral-600 pt-8 select-none border-t border-neutral-950">
             <div>
-              [SYS_EOF]
+              [STAY TUNED FOR WAY MORE]
             </div>
             <div>
-              2026 · Rithik Tank · ALL ACADEMICAL PORTALS OPEN
+              2026 · Rithik Tank · ALL RIGHTS RESERVED
             </div>
           </div>
 
