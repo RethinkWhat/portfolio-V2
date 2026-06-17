@@ -96,7 +96,7 @@ export default function CursorTrail({ active }) {
           size: Math.random() * 3 + 3,
           alpha: 1,
           decay: Math.random() * 0.025 + 0.018,
-          hue: Math.random() > 0.4 ? "24" : "36", // Slate-orange and bright-yellowish tones
+          hue: Math.random() > 0.4 ? "200" : "220", // Electric cyan and vibrant tech-blue tones
         });
       }
 
@@ -136,8 +136,8 @@ export default function CursorTrail({ active }) {
         // Beautiful layered radial gradient for glowing neon effect
         const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2);
         
-        // Hue 24 is deep brand orange, 36 is golden orange
-        const colorString = p.hue === "24" ? `255, 95, 0` : `255, 159, 10`;
+        // Hue 200 is electric cyan, 220 is premium blue
+        const colorString = p.hue === "200" ? `0, 180, 255` : `10, 132, 255`;
         
         gradient.addColorStop(0, `rgba(${colorString}, ${p.alpha * 0.8})`);
         gradient.addColorStop(0.4, `rgba(${colorString}, ${p.alpha * 0.3})`);
@@ -149,7 +149,7 @@ export default function CursorTrail({ active }) {
         ctx.fill();
       }
 
-      // Render custom cursor shape (transparent circle with glowing orange border, or black when over the orange hero background)
+      // Render custom cursor shape (transparent circle with glowing blue border, or black when over the blue hero background)
       if (mouseRef.current.active) {
         // smooth interpolates the position (lerp)
         cursorRef.current.x += (mouseRef.current.x - cursorRef.current.x) * 0.22;
@@ -167,33 +167,33 @@ export default function CursorTrail({ active }) {
         const cx = cursorRef.current.x;
         const cy = cursorRef.current.y;
 
-        // Find if the cursor position is on the hero section (orange background)
+        // Find if the cursor position is on the hero section (blue background)
         const hero = document.getElementById("hero");
-        let isOverOrange = false;
+        let isOverBlue = false;
         if (hero) {
           const rect = hero.getBoundingClientRect();
           if (cx >= rect.left && cx <= rect.right && cy >= rect.top && cy <= rect.bottom) {
-            isOverOrange = true;
+            isOverBlue = true;
           }
         }
 
         // Find if the cursor position is on the floating navigation bar
         const navbar = document.getElementById("navbar-container");
         let isOverNavbar = false;
-        let isNavbarOrange = false;
+        let isNavbarBlue = false;
         if (navbar) {
           const rect = navbar.getBoundingClientRect();
           if (cx >= rect.left && cx <= rect.right && cy >= rect.top && cy <= rect.bottom) {
             isOverNavbar = true;
-            isNavbarOrange = navbar.classList.contains("text-black");
+            isNavbarBlue = navbar.classList.contains("text-white");
           }
         }
 
         // If on the Navbar, expand sizes for a super tactile and prominent feel
         if (isOverNavbar) {
-          targetRadius = isHovered ? 26 : 14;
+          targetRadius = isHovered ? 32 : 18;
           if (isClicked) {
-            targetRadius = isHovered ? 16 : 9;
+            targetRadius = isHovered ? 20 : 12;
           }
         }
 
@@ -207,35 +207,42 @@ export default function CursorTrail({ active }) {
         let coreDotRadius = 1.8;
 
         if (isOverNavbar) {
-          coreDotRadius = isHovered ? 3.5 : 2.5; // Larger core dot for crisp visibility
-          if (isNavbarOrange) {
-            // Navbar is bright orange state -> make cursor contrast with sharp black tones
-            dotColor = "rgba(0, 0, 0, 1)";
-            auraColor = "rgba(0, 0, 0, 0.18)";
-            strokeColor = "rgba(0, 0, 0, 0.95)";
-            strokeWidth = isHovered ? 2.8 : 2.0;
+          coreDotRadius = isHovered ? 4.5 : 3.0; // Larger core dot for crisp visibility
+          if (isNavbarBlue) {
+            // Navbar is bright blue state -> make cursor contrast with sharp bright/high contrast styling and a dark backdrop drop-shadow
+            dotColor = "rgba(255, 255, 255, 1)";
+            auraColor = "rgba(255, 255, 255, 0.35)";
+            strokeColor = "rgba(255, 255, 255, 1)";
+            strokeWidth = isHovered ? 3.5 : 2.5;
+            ctx.shadowColor = "rgba(0, 0, 0, 0.65)";
+            ctx.shadowBlur = 10;
           } else {
-            // Navbar is dark black state -> make cursor pop with vibrant orange glow
-            dotColor = "rgba(255, 159, 10, 1)";
-            auraColor = "rgba(255, 95, 0, 0.22)";
-            strokeColor = "rgba(255, 159, 10, 1)";
-            strokeWidth = isHovered ? 2.8 : 2.0;
+            // Navbar is dark black state -> make cursor pop with vibrant electric blue glow
+            dotColor = "rgba(0, 210, 255, 1)";
+            auraColor = "rgba(10, 132, 255, 0.4)";
+            strokeColor = "rgba(10, 132, 255, 1)";
+            strokeWidth = isHovered ? 3.5 : 2.5;
+            ctx.shadowColor = "rgba(10, 132, 255, 0.85)";
+            ctx.shadowBlur = 10;
           }
         } else {
-          // Defaults: Colors based on whether we are over the orange background
-          dotColor = isOverOrange 
-            ? (isHovered ? "rgba(35, 35, 35, 1)" : "rgba(0, 0, 0, 1)")
-            : (isHovered ? "rgba(255, 159, 10, 1)" : "rgba(255, 95, 0, 1)");
+          // Reset shadow for other areas
+          ctx.shadowBlur = 0;
 
-          auraColor = isOverOrange
-            ? "rgba(0, 0, 0, 0.08)"
-            : "rgba(255, 159, 10, 0.08)";
+          // Defaults: Colors based on whether we are over the blue background
+          dotColor = isOverBlue 
+            ? (isHovered ? "rgba(240, 240, 240, 1)" : "rgba(255, 255, 255, 1)")
+            : (isHovered ? "rgba(10, 132, 255, 1)" : "rgba(0, 180, 255, 1)");
 
-          strokeColor = isOverOrange
-            ? (isHovered ? "rgba(0, 0, 0, 0.9)" : "rgba(0, 0, 0, 0.85)")
-            : (isHovered ? "rgba(255, 159, 10, 0.9)" : "rgba(255, 95, 0, 0.82)");
+          auraColor = isOverBlue
+            ? "rgba(255, 255, 255, 0.15)"
+            : "rgba(10, 132, 255, 0.08)";
 
-          strokeWidth = isHovered ? (isOverOrange ? 2.0 : 1.8) : 1.4;
+          strokeColor = isOverBlue
+            ? (isHovered ? "rgba(255, 255, 255, 0.95)" : "rgba(255, 255, 255, 0.85)")
+            : (isHovered ? "rgba(10, 132, 255, 0.9)" : "rgba(0, 180, 255, 0.82)");
+
+          strokeWidth = isHovered ? (isOverBlue ? 2.0 : 1.8) : 1.4;
         }
 
         // 1. Draw central core tiny point (instant feedback at precise hardware coords)
@@ -258,6 +265,9 @@ export default function CursorTrail({ active }) {
         ctx.strokeStyle = strokeColor;
         ctx.lineWidth = strokeWidth;
         ctx.stroke();
+
+        // Turn off shadow for particles to keep trail fast/light
+        ctx.shadowBlur = 0;
       }
 
       animationFrameId = requestAnimationFrame(render);

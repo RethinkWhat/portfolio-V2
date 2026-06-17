@@ -8,8 +8,8 @@ export default function Home({ scrollToSection }) {
       className="min-h-screen relative flex flex-col items-center justify-center text-center px-4 overflow-hidden"
     >
     <Grainient
-    color1="#d18a1f"
-    color2="#f6a325"
+    color1="#7195ef"
+    color2="#3c60ba"
     color3="#000000"
     timeSpeed={1}
     colorBalance={0}
@@ -55,7 +55,7 @@ export default function Home({ scrollToSection }) {
               href="https://github.com/rethinkwhat" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="p-2 bg-black hover:bg-[#111] text-white rounded-full transition-all duration-300 border border-white/10 hover:scale-110 shadow-lg inline-flex items-center justify-center w-11 h-11"
+              className="p-2 bg-black hover:bg-[#555] text-white rounded-full transition-all duration-300 border border-white/10 hover:scale-110 shadow-lg inline-flex items-center justify-center w-11 h-11"
             >
               <Github className="w-5 h-5 text-white" />
             </a>
@@ -64,7 +64,7 @@ export default function Home({ scrollToSection }) {
               href="https://ph.linkedin.com/in/rithik-tank-904677278" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="p-2 bg-black hover:bg-[#111] text-white rounded-full transition-all duration-300 border border-white/10 hover:scale-110 shadow-lg inline-flex items-center justify-center w-11 h-11"
+              className="p-2 bg-black hover:bg-[#555] text-white rounded-full transition-all duration-300 border border-white/10 hover:scale-110 shadow-lg inline-flex items-center justify-center w-11 h-11"
             >
               <Linkedin className="w-5 h-5 text-white fill-white" />
             </a>
@@ -77,7 +77,7 @@ export default function Home({ scrollToSection }) {
         <button 
           id="hero-scroll-btn"
           onClick={() => scrollToSection("portfolio-sections")} 
-          className="p-3.5 bg-black/40 hover:bg-black/80 text-white hover:text-orange-500 rounded-full transition-all duration-300 border border-white/15 cursor-pointer shadow-lg animate-bounce"
+          className="p-3.5 bg-black/40 hover:bg-white/80 text-white hover:text-blue-500 rounded-full transition-all duration-300 border border-white/15 cursor-pointer shadow-lg animate-bounce"
           aria-label="Scroll down to resume"
         >
           <ChevronDown className="w-5 h-5" />

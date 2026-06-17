@@ -42,11 +42,11 @@ export default function App() {
   };
 
   return (
-    <div className="custom-cursor-active bg-black text-neutral-300 font-sans min-h-screen antialiased selection:bg-orange-500 selection:text-black">
+    <div className="custom-cursor-active bg-black text-neutral-300 font-sans min-h-screen antialiased selection:bg-blue-600 selection:text-white">
       {/* Dynamic tactile ambient background definitions */}
       <style>{`
         .grainy-bg {
-          background: linear-gradient(135deg, #e65c00 0%, #f9d423 100%);
+          background: linear-gradient(135deg, #0055ff 0%, #00d2ff 100%);
           position: relative;
         }
         .grainy-bg::before {
@@ -92,13 +92,13 @@ export default function App() {
             : "w-12 px-0 justify-center"
         } ${
           scrolled 
-            ? "bg-gradient-to-r from-[#ff5f00] to-[#ff9f0a] border border-orange-500/30 text-black shadow-[0_0_20px_rgba(255,95,0,0.15)]" 
-            : "bg-[#050505]/95 border border-neutral-800 text-neutral-300 hover:border-[#ff9f0a]/30"
+            ? "bg-gradient-to-r from-[#0055ff] to-[#0a84ff] border border-blue-500/30 text-white shadow-[0_0_20px_rgba(0,85,255,0.25)]" 
+            : "bg-[#050505]/95 border border-neutral-800 text-neutral-300 hover:border-[#0a84ff]/30"
         }`}
       >
         {!isNavHovered ? (
           <Compass className={`w-5 h-5 transition-transform duration-1000 ${
-            scrolled ? "text-black animate-spin" : "text-[#ff9f0a]"
+            scrolled ? "text-white animate-spin" : "text-[#0a84ff]"
           }`} style={{ animationDuration: '6s' }} />
         ) : (
           <div className="flex items-center justify-between w-full animate-in fade-in zoom-in-95 duration-200">
@@ -114,7 +114,7 @@ export default function App() {
                 className="p-1.5 transition-all cursor-pointer flex items-center justify-center rounded-full"
                 aria-label="Home and section selector dropdown"
               >
-                <HomeIcon className={`w-4.5 h-4.5 transition-all ${scrolled ? 'text-black hover:text-white' : 'text-zinc-100 hover:text-[#ff9f0a]'}`} />
+                <HomeIcon className={`w-4.5 h-4.5 transition-all ${scrolled ? 'text-white hover:text-blue-200' : 'text-zinc-100 hover:text-[#0a84ff]'}`} />
               </button>
 
               {/* Website sections drop panel on hovering Home icon */}
@@ -126,49 +126,49 @@ export default function App() {
                   <div className="flex flex-col gap-0.5">
                     <button 
                       onClick={() => { scrollToSection("hero"); setShowHomeMenu(false); }} 
-                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#ff9f0a]/10 hover:text-[#ff9f0a] text-zinc-400 transition-all cursor-pointer"
+                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#0a84ff]/10 hover:text-[#0a84ff] text-zinc-400 transition-all cursor-pointer"
                     >
                       // HOME PORTAL
                     </button>
                     <button 
                       onClick={() => { scrollToSection("summary-section"); setShowHomeMenu(false); }} 
-                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#ff9f0a]/10 hover:text-[#ff9f0a] text-zinc-400 transition-all cursor-pointer"
+                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#0a84ff]/10 hover:text-[#0a84ff] text-zinc-400 transition-all cursor-pointer"
                     >
                       // SUMMARY MATRIX
                     </button>
                     <button 
                       onClick={() => { scrollToSection("experience-section"); setShowHomeMenu(false); }} 
-                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#ff9f0a]/10 hover:text-[#ff9f0a] text-zinc-400 transition-all cursor-pointer"
+                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#0a84ff]/10 hover:text-[#0a84ff] text-zinc-400 transition-all cursor-pointer"
                     >
                       // CAREER TRAJECTORY
                     </button>
                     <button 
                       onClick={() => { scrollToSection("research-section"); setShowHomeMenu(false); }} 
-                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#ff9f0a]/10 hover:text-[#ff9f0a] text-zinc-400 transition-all cursor-pointer"
+                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#0a84ff]/10 hover:text-[#0a84ff] text-zinc-400 transition-all cursor-pointer"
                     >
                       // ACOUSTIC RESEARCH
                     </button>
                     <button 
                       onClick={() => { scrollToSection("projects-section"); setShowHomeMenu(false); }} 
-                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#ff9f0a]/10 hover:text-[#ff9f0a] text-zinc-400 transition-all cursor-pointer"
+                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#0a84ff]/10 hover:text-[#0a84ff] text-zinc-400 transition-all cursor-pointer"
                     >
                       // SOFTWARE SANDBOX
                     </button>
                     <button 
                       onClick={() => { scrollToSection("skills-education-container"); setShowHomeMenu(false); }} 
-                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#ff9f0a]/10 hover:text-[#ff9f0a] text-zinc-400 transition-all cursor-pointer"
+                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#0a84ff]/10 hover:text-[#0a84ff] text-zinc-400 transition-all cursor-pointer"
                     >
                       // TECH CAPABILITIES
                     </button>
                     <button 
                       onClick={() => { scrollToSection("certifications-section"); setShowHomeMenu(false); }} 
-                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#ff9f0a]/10 hover:text-[#ff9f0a] text-[#ff9f0a] text-zinc-400 transition-all cursor-pointer"
+                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#0a84ff]/10 hover:text-[#0a84ff] text-[#0a84ff] text-zinc-400 transition-all cursor-pointer"
                     >
                       // CERTIFICATIONS
                     </button>
                     <button 
                       onClick={() => { scrollToSection("contact-section"); setShowHomeMenu(false); }} 
-                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#ff9f0a]/10 hover:text-[#ff9f0a] text-zinc-400 transition-all cursor-pointer"
+                      className="w-full text-left px-2.5 py-1.5 rounded-lg text-[10px] font-mono font-bold hover:bg-[#0a84ff]/10 hover:text-[#0a84ff] text-zinc-400 transition-all cursor-pointer"
                     >
                       // CONTACT OUTPOST
                     </button>
@@ -182,23 +182,23 @@ export default function App() {
               onClick={() => scrollToSection("summary-section")}
               className="p-1.5 transition-all cursor-pointer flex items-center justify-center relative rounded-full group"
               aria-label="Profile and biography summary section"
-              title="Profile Matrix"
+              title="Profile"
             >
-              <User className={`w-4.5 h-4.5 transition-all ${scrolled ? 'text-black hover:text-white' : 'text-zinc-100 hover:text-[#ff9f0a]'}`} />
+              <User className={`w-4.5 h-4.5 transition-all ${scrolled ? 'text-white hover:text-blue-200' : 'text-zinc-100 hover:text-[#0a84ff]'}`} />
               <span className="absolute -bottom-10 bg-black/90 border border-neutral-800 text-[8px] font-mono text-zinc-400 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-all pointer-events-none tracking-widest whitespace-nowrap">
                 PROFILE
               </span>
             </button>
 
-            {/* Research / Acoustic Intelligence Scroll Button */}
+            {/* Research */}
             <button
               onClick={() => scrollToSection("research-section")}
               className="p-1.5 transition-all cursor-pointer flex items-center justify-center relative rounded-full group"
               aria-label="Acoustic intelligence and research section"
-              title="Research Dissertations"
+              title="Research"
             >
-              <BrainCircuit className={`w-4.5 h-4.5 transition-all ${scrolled ? 'text-black hover:text-white' : 'text-zinc-100 hover:text-[#ff9f0a]'}`} />
-              <span className="absolute -bottom-10 bg-black/90 border border-[#ff9f0a]/20 text-[8px] font-mono text-zinc-200 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-all pointer-events-none tracking-widest whitespace-nowrap">
+              <BrainCircuit className={`w-4.5 h-4.5 transition-all ${scrolled ? 'text-white hover:text-blue-200' : 'text-zinc-100 hover:text-[#0a84ff]'}`} />
+              <span className="absolute -bottom-10 bg-black/90 border border-[#0a84ff]/20 text-[8px] font-mono text-zinc-200 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-all pointer-events-none tracking-widest whitespace-nowrap">
                 RESEARCH
               </span>
             </button>
@@ -210,7 +210,7 @@ export default function App() {
               aria-label="Software deployments sandbox section"
               title="Interactive Software"
             >
-              <Code2 className={`w-4.5 h-4.5 transition-all ${scrolled ? 'text-black hover:text-white' : 'text-zinc-100 hover:text-[#ff9f0a]'}`} />
+              <Code2 className={`w-4.5 h-4.5 transition-all ${scrolled ? 'text-white hover:text-blue-200' : 'text-zinc-100 hover:text-[#0a84ff]'}`} />
               <span className="absolute -bottom-10 bg-black/90 border border-neutral-800 text-[8px] font-mono text-zinc-400 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-all pointer-events-none tracking-widest whitespace-nowrap">
                 PROJECTS
               </span>
@@ -221,9 +221,9 @@ export default function App() {
               onClick={() => scrollToSection("contact-section")}
               className="p-1.5 transition-all cursor-pointer flex items-center justify-center relative rounded-full group"
               aria-label="Contact callback pipeline section"
-              title="Contact Outpost"
+              title="Contact Me"
             >
-              <Mail className={`w-4.5 h-4.5 transition-all ${scrolled ? 'text-black hover:text-white' : 'text-zinc-100 hover:text-[#ff9f0a]'}`} />
+              <Mail className={`w-4.5 h-4.5 transition-all ${scrolled ? 'text-white hover:text-blue-200' : 'text-zinc-100 hover:text-[#0a84ff]'}`} />
               <span className="absolute -bottom-10 bg-black/90 border border-neutral-800 text-[8px] font-mono text-zinc-400 px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-all pointer-events-none tracking-widest whitespace-nowrap">
                 CONTACT
               </span>
@@ -256,10 +256,10 @@ export default function App() {
           {/* Code Footer file signature indicators - Pure Human-Centered design elements */}
           <div className="flex items-center justify-between font-mono text-[10px] text-neutral-600 pt-8 select-none border-t border-neutral-950">
             <div>
-              EXPECT MORE TO COME.
+              [SYS_EOF]
             </div>
             <div>
-              2026 · Rithik Tank · ALL RIGHTS RESERVED
+              2026 · Rithik Tank · ALL ACADEMICAL PORTALS OPEN
             </div>
           </div>
 
