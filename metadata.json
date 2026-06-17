@@ -1,6 +1,6 @@
 {
   "name": "Rithik Tank Portfolio",
-  "description": "An orange and black developer portfolio following a custom terminal design system.",
+  "description": "My developer portfolio.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

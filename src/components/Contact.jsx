@@ -21,8 +21,8 @@ export default function Contact() {
             <Mail className="w-4 h-4 text-orange-555" />
             GET IN TOUCH
           </span>
-          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-red-500/10 text-red-500 text-[9px] font-mono font-bold rounded border border-red-500/20">
-            <span className="w-1 h-1 rounded-full bg-red-400 animate-ping" /> GATEWAY OFFLINE
+          <div className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-green-500/10 text-green-500 text-[9px] font-mono font-bold rounded border border-green-500/20">
+            <span className="w-1 h-1 rounded-full bg-green-400 animate-ping" /> GATEWAY ONLINE
           </div>
         </div>
 
@@ -42,10 +42,10 @@ export default function Contact() {
               <div className="p-3 bg-neutral-950 rounded-xl border border-neutral-900 flex items-center justify-between group">
                 <span className="text-zinc-500">EMAIL DIRECTORY:</span>
                 <a 
-                  href="mailto:Rithiktank358@gmail.com" 
+                  href="mailto:rithiktank.business@gmail.com" 
                   className="text-[#ff9f0a] font-bold hover:underline transition-all"
                 >
-                  Rithiktank358@gmail.com
+                  rithiktank.business@gmail.com
                 </a>
               </div>
 
@@ -84,22 +84,45 @@ export default function Contact() {
 
           {/* Right Column: Interaction Form */}
           <form 
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (!contactName || !contactEmail || !contactMessage) return;
+            onSubmit={async (e) => {
+            e.preventDefault();
+
+            if (!contactName || !contactEmail || !contactMessage) return;
+
+            try {
               setFormSending(true);
+
+              const response = await fetch("./api/contact", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  name: contactName,
+                  email: contactEmail,
+                  message: contactMessage,
+                }),
+              });
+
+              if (!response.ok) {
+                throw new Error("Failed to send");
+              }
+
+              setFormSuccess(true);
+
               setTimeout(() => {
-                setFormSending(false);
-                setFormSuccess(true);
-                // Reset form fields after some time
-                setTimeout(() => {
-                  setContactName("");
-                  setContactEmail("");
-                  setContactMessage("");
-                  setFormSuccess(false);
-                }, 5000);
-              }, 1500);
-            }}
+                setContactName("");
+                setContactEmail("");
+                setContactMessage("");
+                setFormSuccess(false);
+              }, 5000);
+            } catch (error) {
+              console.error(error);
+              alert("Failed to send message.");
+            } finally {
+              setFormSending(false);
+            }
+          }}
             className="lg:col-span-7 bg-[#050505] border border-neutral-800 rounded-2xl p-5 sm:p-6 space-y-4"
           >
             <div className="space-y-1">
